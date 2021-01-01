@@ -32,9 +32,9 @@
             var vel = 1,
             vel_x = vel_y = 0, // vx, vy
             position_x = position_y = 10, // px, py
-            body_snake = 20, // lp
-            amount_square = 20, // qp
-            apple_x = apple_y = 15; // ax, ay
+            square_size = 20, // tp
+            square_amount = 20, // qp
+            apple_x = apple_y = 10; // ax, ay
 
             var trail = [];
             tail = 5;
@@ -46,20 +46,23 @@
 
                 // board navigation
                 if (position_x < 0){
-                    position_x = amount_square -1;
+                    position_x = square_amount -1;
                 }
-                if (position_x > amount_square - 1) {
+                if (position_x > square_amount - 1) {
                     position_x = 0;
                 }
                 if (position_y < 0) {
-                    position_y = amount_square - 1;
+                    position_y = square_amount - 1;
                 }
-                if (position_y > amount_square - 1) {
+                if (position_y > square_amount - 1) {
                     position_y = 0;
                 }
-                
+
                 ctx.fillStyle = "black";
                 ctx.fillRect(0, 0, stage.width, stage.height);
+
+                ctx.fillStyle = "red";
+                ctx.fillRect(apple_x*square_size, apple_y*square_size, square_size, square_size);
                 
             }
 
