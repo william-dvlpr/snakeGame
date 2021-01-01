@@ -3,18 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Snake Game</title>
+    <style>
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        #stage{
+            margin-right: 240px;
+        }
+    </style>
 </head>
 <body>
     <canvas id="stage" width="400" height="400"></canvas>
 
-    <script type="text/javascript">
-        window.onload() = function() {
+    <script>
+
+        window.onload = function(){
 
             var stage = document.getElementById('stage');
             var ctx = stage.getContext("2d");
 
-            ctx.fillStyle = "black";
-            ctx.fillRect(0, 0, stage.width, stage.height);
+            setInterval(game, 1000/15);
+
+            var vel = 1,
+            vel_x = vel_y = 0, // vx, vy
+            position_x = position_y = 10, // px, py
+            body_snake = 20, // lp
+            amount_square = 20, // qp
+            apple_x = apple_y = 15; // ax, ay
+
+            var trail = [];
+            tail = 5;
+
+            
+            function game(){
+                position_x += vel_x;
+                position_y += vel_y;
+
+                // board navigation
+                if (position_x < 0){
+                    position_x = amount_square -1;
+                }
+                if (position_x > amount_square - 1) {
+                    position_x = 0;
+                }
+                if (position_y < 0) {
+                    position_y = amount_square - 1;
+                }
+                if (position_y > amount_square - 1) {
+                    position_y = 0;
+                }
+                
+                ctx.fillStyle = "black";
+                ctx.fillRect(0, 0, stage.width, stage.height);
+                
+            }
+
+            
         };
     </script>
     
